@@ -83,6 +83,7 @@ Si te sale el mensaje *"Cannot read properties of null (reading 'driver')"* o te
 1.  **Cierra el mensaje:** No le des más clics a "Reload now" por ahora.
 2.  **Instala Node.js:** Ve al **Paso 2.5** de la Guía de Configuración e instala la versión **LTS**.
 3.  **Verifica:** Abre la terminal y escribe `node --version`. Si funciona, vuelve a intentar activar el driver en SQLTools.
+4.  **Paso Final (Install now):** Si al intentar conectar te sale un mensaje que dice *"You need to install sqlite3"*, dale clic al botón azul **"Install now"**. Esto descargará el driver oficial usando Node.js.
 
 ---
 
