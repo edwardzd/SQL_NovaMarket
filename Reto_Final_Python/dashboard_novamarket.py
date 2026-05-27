@@ -32,7 +32,8 @@ def cargar():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(current_dir, 'S01_Ventas_Novamarket_Datos_Limpios.csv')
     df = pd.read_csv(file_path)
-    df['Ingreso_Total'] = df['Cantidad'] * df['Precio_Unitario'] * (1 - df['Descuento_pct'])
+    df['Venta_Bruta']   = df['Cantidad'] * df['Precio_Unitario']
+    df['Ingreso_Total'] = df['Venta_Bruta'] * (1 - df['Descuento_pct'])
     df['Costo_Total']   = df['Cantidad'] * df['Costo_Unitario']  + df['Costo_Envio']
     df['Utilidad_Neta'] = df['Ingreso_Total'] - df['Costo_Total']
     df['Fecha'] = pd.to_datetime(df['Fecha'])
@@ -68,19 +69,21 @@ st.caption("Quantum Analytics Group  ·  Sep–Nov 2023  ·  500 transacciones  
 
 # ── KPIs ─────────────────────────────────────────────────────────────────────
 # Sumamos todo el ingreso total de los datos filtrados para mostrarlo en el indicador superior.
+ventas_brutas = dff['Venta_Bruta'].sum()
 ventas   = dff['Ingreso_Total'].sum()
 utilidad = dff['Utilidad_Neta'].sum()
 margen   = utilidad / ventas * 100 if ventas > 0 else 0
 
-# st.columns() divide la pantalla en 4 columnas invisibles para acomodar nuestros indicadores (KPIs).
-c1, c2, c3, c4 = st.columns(4)
-# metric() crea esas cajas bonitas de números grandes. Aquí mostramos las Ventas Totales.
-c1.metric("💰 Ventas Totales",     f"${ventas:,.0f}")
-c2.metric("📈 Utilidad Neta",      f"${utilidad:,.0f}",
+# st.columns() divide la pantalla en 5 columnas invisibles para acomodar nuestros indicadores (KPIs).
+c1, c2, c3, c4, c5 = st.columns(5)
+# metric() crea esas cajas bonitas de números grandes.
+c1.metric("🛒 Ventas Brutas",     f"${ventas_brutas:,.0f}")
+c2.metric("💰 Ventas Netas",      f"${ventas:,.0f}")
+c3.metric("📈 Utilidad Neta",      f"${utilidad:,.0f}",
           delta=f"{margen:.1f}%",
           delta_color="inverse" if utilidad < 0 else "normal")
-c3.metric("📊 Margen Global",      f"{margen:.1f}%")
-c4.metric("🧾 Transacciones",      f"{len(dff):,}")
+c4.metric("📊 Margen Global",      f"{margen:.1f}%")
+c5.metric("🧾 Transacciones",      f"{len(dff):,}")
 st.divider()
 
 # ── Fila 1: Utilidad por Ciudad + Margen por Categoría ───────────────────────
@@ -126,16 +129,26 @@ st.divider()
 
 # ── Fila 2: Evolución mensual ─────────────────────────────────────────────────
 st.markdown("### 📅 Ventas vs. Utilidad por Mes — El efecto Black Friday")
-md2 = dff.groupby('Mes')[['Ingreso_Total','Utilidad_Neta']].sum().reset_index()
+md2 = dff.groupby('Mes')[['Venta_Bruta', 'Ingreso_Total','Utilidad_Neta']].sum().reset_index()
 
 fig3 = go.Figure()
+
+# Barra de Ventas Brutas (Gris claro / Azul muy suave)
 fig3.add_trace(go.Bar(
-    x=md2['Mes'], y=md2['Ingreso_Total'], name='Ventas',
+    x=md2['Mes'], y=md2['Venta_Bruta'], name='Ventas Brutas',
+    marker_color='#D9E1F2', opacity=0.85, yaxis='y',
+    hovertemplate='<b>%{x}</b><br>Bruta: $%{y:,.0f}<extra></extra>'
+))
+
+# Barra de Ventas Netas (Azul normal)
+fig3.add_trace(go.Bar(
+    x=md2['Mes'], y=md2['Ingreso_Total'], name='Ventas Netas',
     marker_color='#2E75B6', opacity=0.85, yaxis='y',
     text=md2['Ingreso_Total'].apply(lambda x: f"${x/1000:,.0f}k"),
     textposition='outside', textfont=dict(color='black'),
-    hovertemplate='<b>%{x}</b><br>Ventas: $%{y:,.0f}<extra></extra>'
+    hovertemplate='<b>%{x}</b><br>Neta: $%{y:,.0f}<extra></extra>'
 ))
+
 fig3.add_trace(go.Scatter(
     x=md2['Mes'], y=md2['Utilidad_Neta'], name='Utilidad Neta',
     line=dict(color='#C00000', width=3),
@@ -154,7 +167,8 @@ if not nov.empty:
         bgcolor='white', bordercolor='#C00000', ax=65, ay=-45
     )
 fig3.update_layout(
-    height=300, margin=dict(l=10,r=70,t=10,b=10),
+    barmode='group',
+    height=350, margin=dict(l=10,r=70,t=10,b=10),
     xaxis=dict(color='black'),
     yaxis=dict(title=dict(text='Ventas (COP)', font=dict(color='black')), gridcolor='#eee', tickfont=dict(color='black'), color='black'),
     yaxis2=dict(title=dict(text='Utilidad (COP)', font=dict(color='black')), overlaying='y', side='right',
