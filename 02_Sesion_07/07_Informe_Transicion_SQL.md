@@ -5,7 +5,7 @@ Este documento sirve como registro para retomar el trabajo en futuras sesiones, 
 ---
 
 ## 1. El Set de Datos "Sucio" (Punto de Partida)
-**Archivo:** `EXPLO_RA/S03_Ventas_Datos_Sucios_v4.xlsx`
+**Archivo:** `EXPLO_RA/S01_Ventas_Novamarket_Datos_Sucios.xlsx`
 
 Este es el dataset crudo y realista que simula una extracción deficiente de un sistema transaccional. Sus características principales (y errores intencionales) son:
 - **Volumen:** 512 registros.
@@ -20,7 +20,7 @@ Este es el dataset crudo y realista que simula una extracción deficiente de un 
 ---
 
 ## 2. El Set de Datos "Limpio" (Dataset Canónico)
-**Archivo:** `NovaMarket_S01_Dataset_v2.csv`
+**Archivo:** `S01_Ventas_Novamarket_Datos_Limpios.csv`
 
 Es el resultado final tras la limpieza. Es considerado el "Golden Record" o verdad absoluta del proyecto.
 - **Volumen:** 500 registros exactos.

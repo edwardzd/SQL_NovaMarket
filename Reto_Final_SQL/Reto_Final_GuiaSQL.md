@@ -7,7 +7,7 @@ Esta guía es tu "receta paso a paso" para lograr el objetivo del Reto Final uti
 ---
 
 ## FASE I: Creación e Importación de Datos
-El archivo `S03_Ventas_Datos_Sucios_v4.csv` tiene 512 registros llenos de errores. Tu primer objetivo es importarlo a una base de datos y limpiarlo.
+El archivo `S01_Ventas_Novamarket_Datos_Sucios.csv` tiene 512 registros llenos de errores. Tu primer objetivo es importarlo a una base de datos y limpiarlo.
 
 ### Paso 1: Crear la Base de Datos y la Tabla
 1. Abre VS Code o tu gestor de SQLite preferido.
@@ -19,7 +19,7 @@ El archivo `S03_Ventas_Datos_Sucios_v4.csv` tiene 512 registros llenos de errore
 -- Definimos cada columna y qué tipo de dato guardará: 
 -- TEXT (para letras), INTEGER (para números enteros), REAL (para decimales)
 CREATE TABLE Ventas_Sucias (
-    TransaccionID INTEGER,
+    ID_Transaccion INTEGER,
     Fecha TEXT,
     Producto TEXT,
     Categoria TEXT,
@@ -43,13 +43,13 @@ sqlite3 Reto_NovaMarket.db
 sqlite> .mode csv
 
 # .import toma el archivo CSV y mete todos sus datos en la tabla que acabamos de crear
-sqlite> .import S03_Ventas_Datos_Sucios_v4.csv Ventas_Sucias
+sqlite> .import S01_Ventas_Novamarket_Datos_Sucios.csv Ventas_Sucias
 ```
 
 *(Asegúrate de borrar la primera fila si el import metió los títulos de las columnas como si fueran un dato real de venta):*
 ```sql
--- DELETE FROM borra filas. Aquí le decimos que borre la fila donde el TransaccionID sea la palabra literal 'TransaccionID'
-DELETE FROM Ventas_Sucias WHERE TransaccionID = 'TransaccionID';
+-- DELETE FROM borra filas. Aquí le decimos que borre la fila donde el ID_Transaccion sea la palabra literal 'ID_Transaccion'
+DELETE FROM Ventas_Sucias WHERE ID_Transaccion = 'ID_Transaccion';
 ```
 
 ---
@@ -66,7 +66,7 @@ DELETE FROM Ventas_Sucias
 WHERE ROWID NOT IN (
     SELECT MIN(ROWID) 
     FROM Ventas_Sucias 
-    GROUP BY TransaccionID, Fecha, Producto, Categoria, Precio_Unitario, Costo_Unitario, Ciudad, Region, Cantidad, Descuento_pct, Costo_Envio
+    GROUP BY ID_Transaccion, Fecha, Producto, Categoria, Precio_Unitario, Costo_Unitario, Ciudad, Cantidad, Descuento_pct, Costo_Envio
 );
 ```
 *(Al verificar con `SELECT COUNT(*) FROM Ventas_Sucias;`, debes obtener exactamente **500**).*

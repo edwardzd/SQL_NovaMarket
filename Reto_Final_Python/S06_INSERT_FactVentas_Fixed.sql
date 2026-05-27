@@ -1,6 +1,6 @@
 -- ═══════════════════════════════════════════════════════════════════
 -- NOVAMARKET TECH — Sincronización Dataset Canónico → SQLite
--- Fuente: NovaMarket_S01_Dataset_v2.csv
+-- Fuente: S01_Ventas_Novamarket_Datos_Limpios.csv
 -- Resultado verificado: Leticia = −$79,342 / −50.4%
 -- Compatible: SQLite 3.x (Antigravity / VS Code)
 -- Aplica a: Novamarket_S07.db  y  Novamarket_S08S09.db

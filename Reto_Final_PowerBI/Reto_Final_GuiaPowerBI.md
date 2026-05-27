@@ -7,12 +7,12 @@ Esta guía es tu "receta paso a paso" para lograr el objetivo del Reto Final uti
 ---
 
 ## FASE I: Extracción y Limpieza (Power Query)
-El archivo `S03_Ventas_Datos_Sucios_v4.xlsx` tiene 512 registros llenos de errores. Tu primer objetivo es limpiarlo hasta obtener exactamente 500 registros perfectos.
+El archivo `S01_Ventas_Novamarket_Datos_Sucios.xlsx` tiene 512 registros llenos de errores. Tu primer objetivo es limpiarlo hasta obtener exactamente 500 registros perfectos.
 
 ### Paso 1: Cargar los Datos
 1. Abre Power BI Desktop.
 2. Clic en **Obtener datos** -> **Libro de Excel**.
-3. Selecciona el archivo `S03_Ventas_Datos_Sucios_v4.xlsx`.
+3. Selecciona el archivo `S01_Ventas_Novamarket_Datos_Sucios.xlsx`.
 4. Selecciona la hoja `Ventas_Datos_Sucios`.
 5. ⚠️ **MUY IMPORTANTE:** Haz clic en **Transformar datos** (NO en Cargar). Esto abrirá el editor de *Power Query*.
 

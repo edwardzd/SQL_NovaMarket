@@ -41,7 +41,7 @@ El orden de los factores aquí **SÍ** altera el producto. No puedes abrir el Da
 Este archivo es el corazón del proyecto. Debes abrirlo y ejecutar **cada celda de arriba hacia abajo** (puedes usar el botón "Run All" en la parte superior).
 
 **¿Por qué es obligatorio correr esto primero?**
-1. **Limpia los datos:** Toma el archivo sucio original (`S03_Ventas_Datos_Sucios_v4.xlsx`), lo limpia mediante código y exporta un nuevo archivo llamado `NovaMarket_S01_Dataset_v2.csv` (este es el insumo limpio que leerá el Dashboard).
+1. **Limpia los datos:** Toma el archivo sucio original (`S01_Ventas_Novamarket_Datos_Sucios.xlsx`), lo limpia mediante código y exporta un nuevo archivo llamado `S01_Ventas_Novamarket_Datos_Limpios.csv` (este es el insumo limpio que leerá el Dashboard).
 2. **Genera el Dashboard:** La ultimísima celda de este Notebook tiene un "Magic Command" (`%%writefile dashboard_novamarket.py`). Esto significa que al ejecutar esa celda, ¡se autogenera físicamente el archivo del Dashboard!
 
 ### PASO 2: Levantar el Dashboard (`dashboard_novamarket.py`)
@@ -82,7 +82,7 @@ El profesor y jurado evaluará tu dominio del negocio asumiendo el rol de una Ju
 | 🎯 Pregunta de la Junta | 💡 Respuesta Analítica Esperada |
 | :--- | :--- |
 | **"¿Por qué Leticia pierde dinero? ¿Es un problema de ventas o de costos?"** | *"El costo de envío ($1,650 por transacción) representa aproximadamente el 73% del ingreso bruto. **No es un problema de ventas** —Leticia vende bien—. Es un problema estructural de la logística de envíos hacia esa zona que devora la rentabilidad."* |
-| **"Si cerramos Leticia hoy mismo, ¿cuánto mejora el margen total?"** | *"Como vimos en el Simulador del Dashboard, la utilidad total de la empresa pasa de ~$121,930 a ~$201,272. Esto es un aumento del ~65%. El margen global de la compañía mejora dramáticamente pasando del 10.4% a casi un **19.9%**."* |
+| **"Si cerramos Leticia hoy mismo, ¿cuánto mejora el margen total?"** | *"Como vimos en el Simulador del Dashboard, la utilidad total de la empresa pasa de ~$42,914 a ~$122,256. Esto es un aumento de casi el 185%. El margen global de la compañía mejora dramáticamente pasando del 3.2% a casi un **10.4%**."* |
 | **"¿El Black Friday mejoró nuestras utilidades?"** | *"No. El Black Friday aumentó considerablemente el volumen de ventas, pero los descuentos agresivos (hasta del 40-60%) comprimieron severamente los márgenes. Vendimos más productos, pero la rentabilidad general cayó. Es el clásico volumen vs. margen."* |
 | **"¿Qué información adicional necesitarían para tomar una decisión final?"** | *"Para decidir si cerrar Leticia o reestructurarla, necesitaríamos: El costo fijo de mantener la operación allá, los contratos actuales con clientes (para evitar multas por cierre), datos de mercado (¿hay competidores creciendo ahí?) y cotizaciones de nuevos aliados logísticos más económicos."* |
 

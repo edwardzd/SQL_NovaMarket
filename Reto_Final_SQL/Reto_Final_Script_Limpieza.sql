@@ -8,13 +8,13 @@
 -- ║  INSTRUCCIONES DE IMPORTACIÓN INICIAL (En la terminal SQLite)  ║
 -- ║  1. sqlite3 Reto_NovaMarket.db                                 ║
 -- ║  2. .mode csv                                                  ║
--- ║  3. .import S03_Ventas_Datos_Sucios_v4.csv Ventas_Sucias       ║
+-- ║  3. .import S01_Ventas_Novamarket_Datos_Sucios.csv Ventas_Sucias       ║
 -- ║  4. Luego, ejecuta este script completo.                       ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 
 -- ── FASE I: AJUSTES POST-IMPORTACIÓN ───────────────────────────────
 -- Eliminamos la primera fila si el import arrastró los títulos del CSV
-DELETE FROM Ventas_Sucias WHERE TransaccionID = 'TransaccionID';
+DELETE FROM Ventas_Sucias WHERE ID_Transaccion = 'ID_Transaccion';
 
 -- ── FASE II: LIMPIEZA DE DATOS (DML) ───────────────────────────────
 
@@ -24,7 +24,7 @@ DELETE FROM Ventas_Sucias
 WHERE ROWID NOT IN (
     SELECT MIN(ROWID) 
     FROM Ventas_Sucias 
-    GROUP BY TransaccionID, Fecha, Producto, Categoria, Precio_Unitario, Costo_Unitario, Ciudad, Region, Cantidad, Descuento_pct, Costo_Envio
+    GROUP BY ID_Transaccion, Fecha, Producto, Categoria, Precio_Unitario, Costo_Unitario, Ciudad, Cantidad, Descuento_pct, Costo_Envio
 );
 
 -- 2. ESTANDARIZAR TEXTOS

@@ -8,7 +8,7 @@ with open(file_path, 'r', encoding='utf-8') as f:
 comments_map = {
     "import os, pandas as pd, plotly, streamlit as st, openpyxl\n": 
         "# Traemos las herramientas: os (sistema), pandas (datos), plotly (gráficos), streamlit (web)\n",
-    "df_raw = pd.read_excel('S03_Ventas_Datos_Sucios_v4.xlsx'\n": 
+    "df_raw = pd.read_excel('S01_Ventas_Novamarket_Datos_Sucios.xlsx'\n": 
         "# pd.read_excel lee el archivo de Excel. Lo guardamos en una variable llamada 'df_raw' (Dataframe Crudo)\n",
     "print(f\"  Total filas:               {len(df_raw)}\")\n":
         "# len() cuenta cuántas filas tiene nuestra tabla actualmente\n",

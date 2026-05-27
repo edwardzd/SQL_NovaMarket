@@ -1,7 +1,10 @@
+# MAGIC COMMAND: Esta instrucción toma todo el código debajo de ella y crea el archivo del Dashboard.
+# Streamlit es la herramienta que convierte código Python en una página web interactiva.
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 
+# Configuramos la pestaña del navegador: Título, ícono, y decimos que use toda la pantalla (wide).
 st.set_page_config(
     page_title="NovaMarket Analytics",
     page_icon="🚀",
@@ -20,9 +23,11 @@ div[data-testid="metric-container"] {
 </style>
 """, unsafe_allow_html=True)
 
+# cache_data guarda los datos en memoria para que la página web cargue súper rápido al filtrar.
 @st.cache_data
+# Definimos una función llamada 'cargar' que va a leer el CSV limpio y prepararlo para los gráficos.
 def cargar():
-    df = pd.read_csv('NovaMarket_S01_Dataset_v2.csv')
+    df = pd.read_csv('S01_Ventas_Novamarket_Datos_Limpios.csv')
     df['Ingreso_Total'] = df['Cantidad'] * df['Precio_Unitario'] * (1 - df['Descuento_pct'])
     df['Costo_Total']   = df['Cantidad'] * df['Costo_Unitario']  + df['Costo_Envio']
     df['Utilidad_Neta'] = df['Ingreso_Total'] - df['Costo_Total']
@@ -32,10 +37,13 @@ def cargar():
         lambda x: '≥40% (Black Friday)' if x >= 0.40 else '<40% (Normal)')
     return df
 
+# Ejecutamos la función cargar() y guardamos los datos listos en la variable 'df'
 df = cargar()
 
 # ── Sidebar ──────────────────────────────────────────────────────────────────
+# sidebar crea un panel lateral en la página web. Añadimos un título 'Filtros'.
 st.sidebar.markdown("## 🔍 Filtros")
+# Creamos una caja de selección múltiple en el panel lateral para elegir las Ciudades.
 ciudades   = st.sidebar.multiselect("Ciudad",
     sorted(df['Ciudad'].unique()), default=sorted(df['Ciudad'].unique()))
 categorias = st.sidebar.multiselect("Categoría",
@@ -43,6 +51,7 @@ categorias = st.sidebar.multiselect("Categoría",
 meses      = st.sidebar.multiselect("Mes",
     sorted(df['Mes'].unique()), default=sorted(df['Mes'].unique()))
 
+# Creamos una tabla 'dff' que filtrará los datos según lo que el usuario elija en la barra lateral.
 dff = df[
     df['Ciudad'].isin(ciudades) &
     df['Categoria'].isin(categorias) &
@@ -54,11 +63,14 @@ st.markdown("## 🚀 NovaMarket Tech — Dashboard Analítico")
 st.caption("Quantum Analytics Group  ·  Sep–Nov 2023  ·  500 transacciones  ·  EXPLO-RA 2026")
 
 # ── KPIs ─────────────────────────────────────────────────────────────────────
+# Sumamos todo el ingreso total de los datos filtrados para mostrarlo en el indicador superior.
 ventas   = dff['Ingreso_Total'].sum()
 utilidad = dff['Utilidad_Neta'].sum()
 margen   = utilidad / ventas * 100 if ventas > 0 else 0
 
+# st.columns() divide la pantalla en 4 columnas invisibles para acomodar nuestros indicadores (KPIs).
 c1, c2, c3, c4 = st.columns(4)
+# metric() crea esas cajas bonitas de números grandes. Aquí mostramos las Ventas Totales.
 c1.metric("💰 Ventas Totales",     f"${ventas:,.0f}")
 c2.metric("📈 Utilidad Neta",      f"${utilidad:,.0f}",
           delta=f"{margen:.1f}%",
@@ -68,6 +80,7 @@ c4.metric("🧾 Transacciones",      f"{len(dff):,}")
 st.divider()
 
 # ── Fila 1: Utilidad por Ciudad + Margen por Categoría ───────────────────────
+# Dividimos la pantalla en 2 columnas: la izquierda (ca) un poco más ancha que la derecha (cb).
 ca, cb = st.columns([1.2, 1])
 
 with ca:
