@@ -7,7 +7,7 @@ Esta guía es tu "receta paso a paso" para lograr el objetivo del Reto Final uti
 ---
 
 ## FASE I: Creación e Importación de Datos
-El archivo `S01_Ventas_Novamarket_Datos_Sucios.csv` tiene 512 registros llenos de errores. Tu primer objetivo es importarlo a una base de datos y limpiarlo.
+El archivo `S01_Ventas_Novamarket_Datos_Sucios.csv` tiene 662 registros llenos de errores. Tu primer objetivo es importarlo a una base de datos y limpiarlo.
 
 ### Paso 1: Crear la Base de Datos y la Tabla
 1. Abre VS Code o tu gestor de SQLite preferido.
@@ -23,11 +23,10 @@ CREATE TABLE Ventas_Sucias (
     Fecha TEXT,
     Producto TEXT,
     Categoria TEXT,
+    Ciudad TEXT,
+    Cantidad INTEGER, -- Esta columna contiene nulos o casillas vacías
     Precio_Unitario REAL,
     Costo_Unitario REAL,
-    Ciudad TEXT,
-    Region TEXT,
-    Cantidad INTEGER, -- Esta columna contiene nulos o casillas vacías
     Descuento_pct REAL,
     Costo_Envio REAL
 );
@@ -69,7 +68,7 @@ WHERE ROWID NOT IN (
     GROUP BY ID_Transaccion, Fecha, Producto, Categoria, Precio_Unitario, Costo_Unitario, Ciudad, Cantidad, Descuento_pct, Costo_Envio
 );
 ```
-*(Al verificar con `SELECT COUNT(*) FROM Ventas_Sucias;`, debes obtener exactamente **500**).*
+*(Al verificar con `SELECT COUNT(*) FROM Ventas_Sucias;`, debes obtener exactamente **650**).*
 
 ### Paso 2: Estandarizar Texto (Ciudades y Categorías)
 ```sql
@@ -156,6 +155,6 @@ Al ejecutar el script `Reto_Final_Respuestas_Junta.sql`, obtendrás evidencia ir
 | 🎯 Pregunta de la Junta | 💡 Respuesta Analítica usando tu "Dashboard Textual" |
 | :--- | :--- |
 | **"¿Por qué Leticia pierde dinero? ¿Es un problema de ventas o de costos?"** | *La primera consulta del script muestra que solo el costo de envío devora casi el **73%** del ingreso. Conclusión: No es un problema de ventas (la gente compra mucho), es un problema estructural logístico.* |
-| **"Si cerramos Leticia, ¿cuánto mejora el margen?"** | *Las consultas del Escenario A vs Escenario B muestran que la utilidad total salta a ~$201,272. El margen global mejora dramáticamente de 10.4% a casi un **19.9%**.* |
+| **"Si cerramos Leticia, ¿cuánto mejora el margen?"** | *Las consultas del Escenario A vs Escenario B muestran que la utilidad total salta a ~$119,082. El negocio pasaría de estar casi estancado a ser altamente rentable.* |
 | **"¿El Black Friday mejoró nuestras utilidades?"** | *La tercera consulta (que usa `CASE WHEN` para separar transacciones) revela que aunque el volumen de ingresos subió, las utilidades cayeron a números rojos (margen negativo) debido a descuentos agresivos de más del 40%.* |
 | **"¿Qué información adicional necesitarían para decidir?"** | *"El costo fijo de mantener la operación en Leticia, los contratos logísticos actuales (para evitar multas por cierre temporal), y cotizaciones de nuevos aliados logísticos para la región."* |

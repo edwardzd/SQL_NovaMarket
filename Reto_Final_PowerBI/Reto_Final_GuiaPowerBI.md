@@ -7,7 +7,7 @@ Esta guía es tu "receta paso a paso" para lograr el objetivo del Reto Final uti
 ---
 
 ## FASE I: Extracción y Limpieza (Power Query)
-El archivo `S01_Ventas_Novamarket_Datos_Sucios.xlsx` tiene 512 registros llenos de errores. Tu primer objetivo es limpiarlo hasta obtener exactamente 500 registros perfectos.
+El archivo `S01_Ventas_Novamarket_Datos_Sucios.xlsx` tiene 662 registros llenos de errores. Tu primer objetivo es limpiarlo hasta obtener exactamente 650 registros perfectos.
 
 ### Paso 1: Cargar los Datos
 1. Abre Power BI Desktop.
@@ -19,7 +19,7 @@ El archivo `S01_Ventas_Novamarket_Datos_Sucios.xlsx` tiene 512 registros llenos 
 ### Paso 2: Limpieza de la Tabla
 En la ventana de Power Query, realiza los siguientes pasos exactos:
 1. **Quitar las primeras filas vacías:** Clic en `Quitar filas` -> `Quitar filas superiores` -> Escribe `2`. Luego, clic en `Usar la primera fila como encabezado`.
-2. **Eliminar Duplicados:** Selecciona todas las columnas (o haz clic en la esquina superior izquierda de la tabla) -> `Quitar filas` -> `Quitar duplicados`. *Pasarás de 512 filas a 500.*
+2. **Eliminar Duplicados:** Selecciona todas las columnas (o haz clic en la esquina superior izquierda de la tabla) -> `Quitar filas` -> `Quitar duplicados`. *Pasarás de 662 filas a 650.*
 3. **Estandarizar Ciudades:** Haz clic derecho sobre el encabezado de la columna `Ciudad` -> `Reemplazar los valores`. Reemplaza "bogota" por "Bogotá", "BOGOTÁ" por "Bogotá", "Cartajena" por "Cartagena", etc., hasta que solo queden las 6 ciudades válidas.
 4. **Estandarizar Categorías:** Haz lo mismo con la columna `Categoria` (ej. "laptops" por "Laptops", "Wereables" por "Wearables").
 5. **Imputar Nulos en Cantidad:** La regla de negocio indica que si falta la cantidad, se debe usar la mediana de esa categoría.
@@ -78,6 +78,6 @@ Usa tu Dashboard interactivo (haciendo clic en las barras y meses) para responde
 | 🎯 Pregunta de la Junta | 💡 Respuesta Analítica Esperada (basada en Power BI) |
 | :--- | :--- |
 | **"¿Por qué Leticia pierde dinero? ¿Es un problema de ventas o de costos?"** | *"El costo de envío ($1,650 por transacción) representa ~73% del ingreso bruto. **No es un problema de ventas** —vende muy bien—. Es un problema estructural logístico."* |
-| **"Si cerramos Leticia, ¿cuánto mejora el margen?"** | *(Filtra excluyendo Leticia en tu slicer)* *"La utilidad total pasa de ~$121,930 a ~$201,272 (un aumento del ~65%). El margen global mejora dramáticamente del 10.4% a casi un **19.9%**."* |
+| **"Si cerramos Leticia, ¿cuánto mejora el margen?"** | *(Filtra excluyendo Leticia en tu slicer)* *"La utilidad total pasa de ~$39,740 a ~$119,082 (un aumento gigantesco). El negocio pasaría de estar casi estancado a ser altamente rentable."* |
 | **"¿El Black Friday mejoró nuestras utilidades?"** | *(Filtra noviembre en tu gráfico)* *"No. Subió el volumen de ventas, pero los descuentos agresivos (hasta 60%) comprimieron los márgenes hasta lo negativo. Vendimos más, pero perdimos rentabilidad."* |
 | **"¿Qué información adicional necesitarían para decidir?"** | *"El costo fijo de mantener la operación en Leticia, los contratos logísticos actuales (para evitar multas por cierre temporal), y cotizaciones de nuevos aliados logísticos para la región."* |

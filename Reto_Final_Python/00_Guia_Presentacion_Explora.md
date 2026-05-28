@@ -59,8 +59,8 @@ Se abrirá automáticamente una pestaña en tu navegador web con la interfaz gr�
 Si en la sustentación alguien de la Junta te pregunta: *"¿Qué hace exactamente ese código de Python?"*, no te compliques leyendo variables. Explica la lógica de negocio detrás de estas 3 grandes fases del Notebook:
 
 ### FASE I: Carga y Limpieza (Data Cleaning)
-* *"Teníamos una base de datos con 512 registros llenos de errores de digitación y datos en blanco. El código soluciona esto de forma automatizada:"*
-  - **`drop_duplicates()`**: Borra las filas que estaban repetidas. Pasamos de 512 a 500 transacciones reales.
+* *"Teníamos una base de datos con 662 registros llenos de errores de digitación y datos en blanco. El código soluciona esto de forma automatizada:"*
+  - **`drop_duplicates()`**: Borra las filas que estaban repetidas. Pasamos de 662 a 650 transacciones reales (y así se mantiene, ya que los nulos se imputan, no se borran).
   - **`.replace()` y los diccionarios (`ciudad_map`)**: Traduce y unifica errores humanos. Le enseña al código que "BOGOTÁ", "Bogota " y "bogota" son en realidad la misma ciudad y debe sumarlos juntos.
   - **Imputación de Nulos:** Los datos en blanco de la columna "Cantidad" se rellenaron utilizando la Mediana estadística de cada categoría de producto, para no alterar la tendencia.
 
@@ -82,7 +82,7 @@ El profesor y jurado evaluará tu dominio del negocio asumiendo el rol de una Ju
 | 🎯 Pregunta de la Junta | 💡 Respuesta Analítica Esperada |
 | :--- | :--- |
 | **"¿Por qué Leticia pierde dinero? ¿Es un problema de ventas o de costos?"** | *"El costo de envío ($1,650 por transacción) representa aproximadamente el 73% del ingreso bruto. **No es un problema de ventas** —Leticia vende bien—. Es un problema estructural de la logística de envíos hacia esa zona que devora la rentabilidad."* |
-| **"Si cerramos Leticia hoy mismo, ¿cuánto mejora el margen total?"** | *"Como vimos en el Simulador del Dashboard, la utilidad total de la empresa pasa de ~$42,914 a ~$122,256. Esto es un aumento de casi el 185%. El margen global de la compañía mejora dramáticamente pasando del 3.2% a casi un **10.4%**."* |
+| **"Si cerramos Leticia hoy mismo, ¿cuánto mejora el margen total?"** | *"Como vimos en el Simulador del Dashboard, la utilidad total de la empresa pasa de ~$39,740 a ~$119,082. El negocio pasaría de estar casi estancado a ser altamente rentable."* |
 | **"¿El Black Friday mejoró nuestras utilidades?"** | *"No. El Black Friday aumentó considerablemente el volumen de ventas, pero los descuentos agresivos (hasta del 40-60%) comprimieron severamente los márgenes. Vendimos más productos, pero la rentabilidad general cayó. Es el clásico volumen vs. margen."* |
 | **"¿Qué información adicional necesitarían para tomar una decisión final?"** | *"Para decidir si cerrar Leticia o reestructurarla, necesitaríamos: El costo fijo de mantener la operación allá, los contratos actuales con clientes (para evitar multas por cierre), datos de mercado (¿hay competidores creciendo ahí?) y cotizaciones de nuevos aliados logísticos más económicos."* |
 
