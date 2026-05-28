@@ -17,3 +17,8 @@ _Gestion_Docente/
 
 # Temporary grading files
 grading_temp/
+
+#Carpetas de reto  SQL y POWER BI Mientras se concentra solo en python
+
+Reto_Final_SQL/
+Reto_Final_PowerBI/ 
