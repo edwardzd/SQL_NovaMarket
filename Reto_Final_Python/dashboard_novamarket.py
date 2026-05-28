@@ -23,11 +23,15 @@ div[data-testid="metric-container"] {
 </style>
 """, unsafe_allow_html=True)
 
+import os
+
 # cache_data guarda los datos en memoria para que la página web cargue súper rápido al filtrar.
 @st.cache_data
 # Definimos una función llamada 'cargar' que va a leer el CSV limpio y prepararlo para los gráficos.
 def cargar():
-    df = pd.read_csv('S01_Ventas_Novamarket_Datos_Limpios.csv')
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_path = os.path.join(current_dir, 'S01_Ventas_Novamarket_Datos_Limpios.csv')
+    df = pd.read_csv(csv_path)
     df['Ingreso_Total'] = df['Cantidad'] * df['Precio_Unitario'] * (1 - df['Descuento_pct'])
     df['Costo_Total']   = df['Cantidad'] * df['Costo_Unitario']  + df['Costo_Envio']
     df['Utilidad_Neta'] = df['Ingreso_Total'] - df['Costo_Total']
