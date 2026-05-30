@@ -206,7 +206,70 @@ with cd2:
 
 st.divider()
 
-# ── Fila 4: Cascada de Costos ─────────────────────────────────────────────────
+# ── Fila 4: Detección de Anomalías ────────────────────────────────────────────
+st.markdown("### 🕵️ Detección de Anomalías (Efecto Black Friday)")
+ca1, ca2 = st.columns(2)
+
+with ca1:
+    st.markdown("**Evolución de Ventas Diarias**")
+    v_diarias = dff.groupby('Fecha')['Ingreso_Total'].sum().reset_index()
+    fig_ts = go.Figure()
+    
+    # Línea base
+    fig_ts.add_trace(go.Scatter(
+        x=v_diarias['Fecha'], y=v_diarias['Ingreso_Total'],
+        mode='lines', line=dict(color='#2E75B6', width=2),
+        name='Ventas'
+    ))
+    
+    # Punto rojo para Black Friday (24 Nov)
+    bf_date = pd.Timestamp('2023-11-24')
+    bf_data = v_diarias[v_diarias['Fecha'] == bf_date]
+    if not bf_data.empty:
+        fig_ts.add_trace(go.Scatter(
+            x=bf_data['Fecha'], y=bf_data['Ingreso_Total'],
+            mode='markers', marker=dict(color='#C00000', size=12),
+            name='Black Friday'
+        ))
+        
+    fig_ts.update_layout(
+        height=320, margin=dict(l=10, r=10, t=10, b=10),
+        plot_bgcolor='white', paper_bgcolor='white', font_color='black',
+        yaxis=dict(gridcolor='#eee', color='black', tickformat='$,.0f'),
+        xaxis=dict(color='black'),
+        showlegend=False
+    )
+    st.plotly_chart(fig_ts, use_container_width=True, theme=None)
+
+with ca2:
+    st.markdown("**Distribución de Ventas por Mes (Boxplot)**")
+    # Para el boxplot es mejor usar las ventas por transacción (dff original)
+    fig_box = go.Figure()
+    
+    meses_orden = sorted(dff['Mes'].unique())
+    colores_mes = {'2023-09': '#BDD7EE', '2023-10': '#BDD7EE', '2023-11': '#FFCCCC'}
+    
+    for m in meses_orden:
+        df_mes = dff[dff['Mes'] == m]
+        fig_box.add_trace(go.Box(
+            y=df_mes['Ingreso_Total'],
+            name=m,
+            marker_color=colores_mes.get(m, '#BDD7EE'),
+            boxpoints='outliers' # Solo mostrar puntos atípicos
+        ))
+        
+    fig_box.update_layout(
+        height=320, margin=dict(l=10, r=10, t=10, b=10),
+        plot_bgcolor='white', paper_bgcolor='white', font_color='black',
+        yaxis=dict(gridcolor='#eee', color='black', tickformat='$,.0f'),
+        xaxis=dict(color='black'),
+        showlegend=False
+    )
+    st.plotly_chart(fig_box, use_container_width=True, theme=None)
+
+st.divider()
+
+# ── Fila 5: Cascada de Costos ─────────────────────────────────────────────────
 st.markdown("### 💸 Estructura de Costos (Gráfico de Cascada)")
 
 # Cálculos de los agregados
