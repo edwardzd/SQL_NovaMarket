@@ -75,9 +75,7 @@ margen   = utilidad / ventas * 100 if ventas > 0 else 0
 c1, c2, c3, c4 = st.columns(4)
 # metric() crea esas cajas bonitas de números grandes. Aquí mostramos las Ventas Totales.
 c1.metric("💰 Ventas Totales",     f"${ventas:,.0f}")
-c2.metric("📈 Utilidad Neta",      f"${utilidad:,.0f}",
-          delta=f"{margen:.1f}%",
-          delta_color="inverse" if utilidad < 0 else "normal")
+c2.metric("📈 Utilidad Neta",      f"${utilidad:,.0f}")
 c3.metric("📊 Margen Global",      f"{margen:.1f}%")
 c4.metric("🧾 Transacciones",      f"{len(dff):,}")
 st.divider()
@@ -155,8 +153,8 @@ if not nov.empty:
 fig3.update_layout(
     height=300, margin=dict(t=20, b=40, l=50, r=70),
     xaxis=dict(color='black'),
-    yaxis=dict(title=dict(text='Ventas (COP)', font=dict(color='black')), gridcolor='#eee', tickfont=dict(color='black'), color='black'),
-    yaxis2=dict(title=dict(text='Utilidad (COP)', font=dict(color='black')), overlaying='y', side='right',
+    yaxis=dict(title=dict(text='Ventas (USD)', font=dict(color='black')), gridcolor='#eee', tickfont=dict(color='black'), color='black'),
+    yaxis2=dict(title=dict(text='Utilidad (USD)', font=dict(color='black')), overlaying='y', side='right',
                 zeroline=True, zerolinecolor='gray', tickfont=dict(color='black'), color='black'),
     legend=dict(orientation='h', y=1.08, font=dict(color='black')),
     plot_bgcolor='white', paper_bgcolor='white', font_color='black'
@@ -183,7 +181,7 @@ with cc:
         texttemplate="%{text}",
         hovertemplate='<b>%{y} × %{x}</b><br>Utilidad: $%{z:,.0f}<extra></extra>'
     ))
-    fig4.update_layout(height=290, margin=dict(t=20, b=60, l=80, r=20), font_color='black',
+    fig4.update_layout(height=290, margin=dict(t=20, b=80, l=120, r=20), font_color='black',
         xaxis=dict(color='black'), yaxis=dict(color='black'))
     st.plotly_chart(fig4, use_container_width=True, theme=None)
 
@@ -284,7 +282,7 @@ fig_waterfall = go.Figure(go.Waterfall(
     measure=["relative", "relative", "relative", "relative", "total"],
     x=["Ingresos Brutos", "Descuentos", "Costo Producto", "Costo Envío", "Utilidad Neta"],
     textposition="outside",
-    text=[f"${ingreso_bruto/1000:,.0f}k", f"-${descuentos/1000:,.0f}k", f"-${costo_prod/1000:,.0f}k", f"-${costo_env/1000:,.0f}k", f"${utilidad_neta/1000:,.0f}k"],
+    text=[f"${ingreso_bruto:,.0f}", f"-${descuentos:,.0f}", f"-${costo_prod:,.0f}", f"-${costo_env:,.0f}", f"${utilidad_neta:,.0f}"],
     y=[ingreso_bruto, -descuentos, -costo_prod, -costo_env, utilidad_neta],
     connector={"line": {"color": "gray", "dash": "dot"}},
     decreasing={"marker": {"color": "#C00000"}},
