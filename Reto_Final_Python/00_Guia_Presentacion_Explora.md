@@ -77,14 +77,26 @@ Si en la sustentación alguien de la Junta te pregunta: *"¿Qué hace exactament
 
 ## 4. Respuestas a la Junta Directiva (El As bajo la manga)
 
-El profesor y jurado evaluará tu dominio del negocio asumiendo el rol de una Junta Directiva. Aquí están las preguntas que te harán y la respuesta analítica esperada (argumenta siempre basándote en los datos que muestra tu Dashboard, ¡no opines!):
+El profesor y jurado evaluará tu dominio del negocio asumiendo el rol de una Junta Directiva. Es vital argumentar **siempre basándote en los gráficos del Dashboard**, ¡nunca opines sin datos!
 
-| 🎯 Pregunta de la Junta | 💡 Respuesta Analítica Esperada |
+### A. Preguntas de Respaldo (Estrategia Clásica)
+Estas preguntas son la "red de seguridad". Respóndelas usando los KPIs generales, el mapa de calor y el simulador.
+
+| 🎯 Pregunta Básica de la Junta | 💡 Respuesta Analítica Esperada |
 | :--- | :--- |
-| **"¿Por qué Leticia pierde dinero? ¿Es un problema de ventas o de costos?"** | *"El costo de envío ($1,650 por transacción) representa aproximadamente el 73% del ingreso bruto. **No es un problema de ventas** —Leticia vende bien—. Es un problema estructural de la logística de envíos hacia esa zona que devora la rentabilidad."* |
-| **"Si cerramos Leticia hoy mismo, ¿cuánto mejora el margen total?"** | *"Como vimos en el Simulador del Dashboard, la utilidad total de la empresa pasa de ~$39,740 a ~$119,082. El negocio pasaría de estar casi estancado a ser altamente rentable."* |
-| **"¿El Black Friday mejoró nuestras utilidades?"** | *"No. El Black Friday aumentó considerablemente el volumen de ventas, pero los descuentos agresivos (hasta del 40-60%) comprimieron severamente los márgenes. Vendimos más productos, pero la rentabilidad general cayó. Es el clásico volumen vs. margen."* |
-| **"¿Qué información adicional necesitarían para tomar una decisión final?"** | *"Para decidir si cerrar Leticia o reestructurarla, necesitaríamos: El costo fijo de mantener la operación allá, los contratos actuales con clientes (para evitar multas por cierre), datos de mercado (¿hay competidores creciendo ahí?) y cotizaciones de nuevos aliados logísticos más económicos."* |
+| **"¿Por qué Leticia pierde dinero? ¿Es un problema de ventas o de costos?"** | *"El costo de envío hacia esa zona devora la rentabilidad. **No es un problema de ventas** —Leticia tiene buen volumen de transacciones—. Es un problema estructural de logística."* |
+| **"Si cerramos Leticia hoy mismo, ¿cuánto mejora el margen total?"** | *"Como vemos en la sección A del **Simulador de Escenarios**, al eliminar Leticia de la ecuación, la utilidad proyectada de la empresa pasa de ~$39,740 a ~$119,082. El negocio despega de inmediato."* |
+| **"¿El Black Friday mejoró nuestras utilidades de forma general?"** | *"No. Aumentó agresivamente el volumen de ventas, pero los descuentos (hasta del 40-60%) comprimieron los márgenes. Vendimos mucho más inventario, pero ganamos menos dinero. Es el clásico conflicto de Volumen vs. Rentabilidad."* |
+| **"¿Qué información adicional necesitarían para tomar la decisión de cierre?"** | *"Necesitaríamos conocer: 1) El costo fijo de mantener la operación, 2) Posibles multas por romper contratos actuales, 3) Estrategias de la competencia en Leticia, y 4) Cotizaciones de nuevos proveedores logísticos."* |
+
+### B. Preguntas Avanzadas (Explotando las nuevas visuales)
+Si quieres sacar la nota máxima, guía a la Junta a través de los nuevos gráficos dinámicos (Cascada, Boxplot y Serie de Tiempo) para demostrar tu dominio técnico.
+
+| 🚀 Pregunta Avanzada de la Junta | 📊 Cómo responder usando el Dashboard |
+| :--- | :--- |
+| **"¿Podemos ver exactamente qué rubro financiero nos está generando pérdidas en Leticia?"** | *(Filtra por Ciudad: Leticia en el panel izquierdo).*<br><br>*"Claro que sí. Si observan el **Gráfico de Cascada de Costos**, notarán que aunque partimos de un buen Ingreso Bruto, la gran barra roja correspondiente al 'Costo de Envío' es tan masiva que empuja la barra final de Utilidad Neta por debajo de cero."* |
+| **"¿Cómo sabemos matemáticamente que noviembre no fue crecimiento orgánico, sino un pico anormal?"** | *(Señala el gráfico de Boxplot de Anomalías).*<br><br>*"Si observan el **Gráfico de Cajas y Bigotes**, verán que el 50% de las ventas normales de noviembre (la caja) se mantienen estables respecto a septiembre y octubre. Sin embargo, en noviembre aparecen múltiples 'puntos solitarios' muy por encima del bigote superior. Estos **Outliers** comprueban estadísticamente que fue un evento atípico, no un crecimiento sostenible."* |
+| **"Si el margen cayó en noviembre, ¿en qué momento exacto ocurrió esta fuga de capital?"** | *(Señala la Serie de Tiempo Diaria).*<br><br>*"El **Gráfico de Evolución Diaria** nos da la fecha exacta. Fíjense en la línea base normal y cómo ocurre una explosión (el punto rojo gigante) exactamente el **24 de noviembre de 2023**. Ese pico de volumen masivo, cruzado con los descuentos excesivos vistos en la cascada, fue lo que evaporó nuestro margen de rentabilidad ese mes."* |
 
 ---
 *Diseñado para el triunfo en EXPLO-RA 2026. ¡Mucho éxito en la presentación!*
