@@ -98,7 +98,7 @@ with ca:
         hovertemplate='<b>%{y}</b><br>Utilidad: $%{x:,.0f}<extra></extra>'
     ))
     fig1.add_vline(x=0, line_dash="dot", line_color="gray", line_width=1)
-    fig1.update_layout(height=300, margin=dict(l=10,r=90,t=10,b=10),
+    fig1.update_layout(height=300, margin=dict(t=20, b=40, l=60, r=90),
         plot_bgcolor='white', paper_bgcolor='white', font_color='black',
         xaxis=dict(gridcolor='#eee', color='black'), yaxis=dict(color='black'))
     st.plotly_chart(fig1, use_container_width=True, theme=None)
@@ -116,7 +116,7 @@ with cb:
         hovertemplate='<b>%{x}</b><br>Margen: %{y:.1f}%<extra></extra>'
     ))
     fig2.add_hline(y=0, line_dash="dot", line_color="gray", line_width=1)
-    fig2.update_layout(height=300, margin=dict(l=10,r=10,t=10,b=10),
+    fig2.update_layout(height=300, margin=dict(t=20, b=40, l=40, r=20),
         plot_bgcolor='white', paper_bgcolor='white', font_color='black',
         yaxis=dict(gridcolor='#eee', color='black'), xaxis=dict(color='black'))
     st.plotly_chart(fig2, use_container_width=True, theme=None)
@@ -153,7 +153,7 @@ if not nov.empty:
         bgcolor='white', bordercolor='#C00000', ax=65, ay=-45
     )
 fig3.update_layout(
-    height=300, margin=dict(l=10,r=70,t=10,b=10),
+    height=300, margin=dict(t=20, b=40, l=50, r=70),
     xaxis=dict(color='black'),
     yaxis=dict(title=dict(text='Ventas (COP)', font=dict(color='black')), gridcolor='#eee', tickfont=dict(color='black'), color='black'),
     yaxis2=dict(title=dict(text='Utilidad (COP)', font=dict(color='black')), overlaying='y', side='right',
@@ -183,7 +183,7 @@ with cc:
         texttemplate="%{text}",
         hovertemplate='<b>%{y} × %{x}</b><br>Utilidad: $%{z:,.0f}<extra></extra>'
     ))
-    fig4.update_layout(height=290, margin=dict(l=10,r=10,t=10,b=10), font_color='black',
+    fig4.update_layout(height=290, margin=dict(t=20, b=60, l=80, r=20), font_color='black',
         xaxis=dict(color='black'), yaxis=dict(color='black'))
     st.plotly_chart(fig4, use_container_width=True, theme=None)
 
@@ -199,7 +199,7 @@ with cd2:
         hovertemplate='<b>%{x}</b><br>Margen: %{y:.1f}%<extra></extra>'
     ))
     fig5.add_hline(y=0, line_dash="dot", line_color="gray")
-    fig5.update_layout(height=290, margin=dict(l=10,r=10,t=10,b=10),
+    fig5.update_layout(height=290, margin=dict(t=20, b=40, l=40, r=20),
         plot_bgcolor='white', paper_bgcolor='white', font_color='black',
         yaxis=dict(gridcolor='#eee', color='black'), xaxis=dict(color='black'))
     st.plotly_chart(fig5, use_container_width=True, theme=None)
@@ -233,7 +233,7 @@ with ca1:
         ))
         
     fig_ts.update_layout(
-        height=320, margin=dict(l=10, r=10, t=10, b=10),
+        height=320, margin=dict(t=20, b=50, l=50, r=20),
         plot_bgcolor='white', paper_bgcolor='white', font_color='black',
         yaxis=dict(gridcolor='#eee', color='black', tickformat='$,.0f'),
         xaxis=dict(color='black'),
@@ -259,7 +259,7 @@ with ca2:
         ))
         
     fig_box.update_layout(
-        height=320, margin=dict(l=10, r=10, t=10, b=10),
+        height=320, margin=dict(t=20, b=50, l=50, r=20),
         plot_bgcolor='white', paper_bgcolor='white', font_color='black',
         yaxis=dict(gridcolor='#eee', color='black', tickformat='$,.0f'),
         xaxis=dict(color='black'),
@@ -293,7 +293,7 @@ fig_waterfall = go.Figure(go.Waterfall(
 ))
 
 fig_waterfall.update_layout(
-    height=350, margin=dict(l=10, r=10, t=30, b=10),
+    height=350, margin=dict(t=30, b=50, l=60, r=20),
     plot_bgcolor='white', paper_bgcolor='white', font_color='black',
     yaxis=dict(gridcolor='#eee', color='black'),
     xaxis=dict(color='black')
