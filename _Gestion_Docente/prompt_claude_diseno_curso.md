@@ -25,6 +25,7 @@ Sin importar la herramienta que usen, al final del corte, el estudiante debe log
 - **Progresión "De menos a más":** Cada corte debe empezar desde lo más básico con su herramienta y aumentar gradualmente en complejidad.
 - **Claridad en Instalaciones:** En las sesiones donde se requiera instalar software (ej. VS Code, librerías de Python, SQLite), debes proporcionar un bloque claro de "Instalación de Entorno" que especifique **qué** instalar, **dónde**, **cuándo** y **para qué**, garantizando el éxito técnico del estudiante desde el primer minuto.
 - **Archivos Versionados:** Cada sesión debe indicar el nombre exacto de la versión del archivo que el estudiante usará o creará (ej. `S11_Limpieza.ipynb`, `S14_Dashboard_v1.py`), facilitando la continuidad técnica en Colab o Antigravity.
+- **Gestión del Tiempo (3 horas por sesión):** Sabiendo que cada sesión dura exactamente 3 horas, tú tienes la libertad y la responsabilidad de distribuir los tiempos y pausas de la clase (ej. teoría vs. práctica) de acuerdo con la carga cognitiva y complejidad técnica del tema a tratar.
 
 ---
 
