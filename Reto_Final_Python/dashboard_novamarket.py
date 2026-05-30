@@ -206,6 +206,39 @@ with cd2:
 
 st.divider()
 
+# ── Fila 4: Cascada de Costos ─────────────────────────────────────────────────
+st.markdown("### 💸 Estructura de Costos (Gráfico de Cascada)")
+
+# Cálculos de los agregados
+ingreso_bruto = (dff['Cantidad'] * dff['Precio_Unitario']).sum()
+descuentos = ingreso_bruto - dff['Ingreso_Total'].sum()
+costo_prod = (dff['Cantidad'] * dff['Costo_Unitario']).sum()
+costo_env = dff['Costo_Envio'].sum()
+utilidad_neta = dff['Utilidad_Neta'].sum()
+
+fig_waterfall = go.Figure(go.Waterfall(
+    name="Costos", orientation="v",
+    measure=["relative", "relative", "relative", "relative", "total"],
+    x=["Ingresos Brutos", "Descuentos", "Costo Producto", "Costo Envío", "Utilidad Neta"],
+    textposition="outside",
+    text=[f"${ingreso_bruto/1000:,.0f}k", f"-${descuentos/1000:,.0f}k", f"-${costo_prod/1000:,.0f}k", f"-${costo_env/1000:,.0f}k", f"${utilidad_neta/1000:,.0f}k"],
+    y=[ingreso_bruto, -descuentos, -costo_prod, -costo_env, utilidad_neta],
+    connector={"line": {"color": "gray", "dash": "dot"}},
+    decreasing={"marker": {"color": "#C00000"}},
+    increasing={"marker": {"color": "#2E75B6"}},
+    totals={"marker": {"color": "#375623" if utilidad_neta >= 0 else "#C00000"}}
+))
+
+fig_waterfall.update_layout(
+    height=350, margin=dict(l=10, r=10, t=30, b=10),
+    plot_bgcolor='white', paper_bgcolor='white', font_color='black',
+    yaxis=dict(gridcolor='#eee', color='black'),
+    xaxis=dict(color='black')
+)
+st.plotly_chart(fig_waterfall, use_container_width=True, theme=None)
+
+st.divider()
+
 # ── Simulador ────────────────────────────────────────────────────────────────
 st.markdown("### 🔮 Simulador de Escenarios")
 cs1, cs2 = st.columns(2)
