@@ -2,6 +2,7 @@
 # Streamlit es la herramienta que convierte código Python en una página web interactiva.
 import streamlit as st
 import pandas as pd
+import os
 import plotly.graph_objects as go
 
 # Configuramos la pestaña del navegador: Título, ícono, y decimos que use toda la pantalla (wide).
@@ -22,8 +23,6 @@ div[data-testid="metric-container"] {
 }
 </style>
 """, unsafe_allow_html=True)
-
-import os
 
 # cache_data guarda los datos en memoria para que la página web cargue súper rápido al filtrar.
 @st.cache_data
