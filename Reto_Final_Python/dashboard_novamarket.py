@@ -182,11 +182,12 @@ with cc:
         hovertemplate='<b>%{y} × %{x}</b><br>Utilidad: $%{z:,.0f}<extra></extra>'
     ))
     fig4.update_layout(height=290, margin=dict(t=20, b=80, l=120, r=20), font_color='black',
+        plot_bgcolor='white', paper_bgcolor='white',
         xaxis=dict(color='black'), yaxis=dict(color='black'))
     st.plotly_chart(fig4, use_container_width=True, theme=None)
 
 with cd2:
-    st.markdown("### 🎯 Black Friday vs. Período Normal")
+    st.markdown("### 🎯 Márgen del Black Friday Vs. Período Normal")
     bf2 = dff.groupby('BF')[['Ingreso_Total','Utilidad_Neta']].sum().reset_index()
     bf2['Margen%'] = bf2['Utilidad_Neta'] / bf2['Ingreso_Total'] * 100
     fig5 = go.Figure(go.Bar(

@@ -37,5 +37,6 @@
             "database": "${workspaceFolder:SQL}/03_Sesion_08_09/Novamarket_S08S09.db"
         }
     ],
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "python.defaultInterpreterPath": "/Users/macbookpro/Developer/Learning/SQL/Reto_Final_Python/.venv/bin/python"
 }

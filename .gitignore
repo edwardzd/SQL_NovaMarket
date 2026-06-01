@@ -1,24 +1,4 @@
-# Antigravity - Teacher Solutions Shield
-_Soluciones_Privadas/
-_Gestion_Docente/
-
-# SQLite Databases
-# 🔒 Por seguridad, ignoramos las bases de datos por defecto.
-*.db
-
-# ✅ EXCEPCIÓN: Permitimos las bases de datos de los alumnos. 
-# Pueden incluir su nombre (ej: Novamarket_S07_Anyi.db)
-!**/*Base_Datos_S06*.db
-!**/*Novamarket_S07*.db
-!**/*Novamarket_S08S09*.db
-
-# OS Files
+.venv/
+__pycache__/
+*.pyc
 .DS_Store
-
-# Temporary grading files
-grading_temp/
-
-#Carpetas de reto  SQL y POWER BI Mientras se concentra solo en python
-
-Reto_Final_SQL/
-Reto_Final_PowerBI/ 

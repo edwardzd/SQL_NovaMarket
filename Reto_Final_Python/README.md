@@ -28,6 +28,7 @@ Para evitar confusiones, aquí está el mapa exacto de qué hace cada archivo en
 
 ### 📚 3. Guías y Documentación Pedagógica
 * `00_Guia_Presentacion_Explora.md` -> La "receta" oficial para que los estudiantes expongan. Contiene las respuestas a la Junta Directiva.
+* `guia_entornos_virtuales.md` -> Tutorial de qué son y cómo configurar los entornos virtuales y librerías del proyecto.
 * `guia_despliegue_streamlit.md` -> Instrucciones para publicar el dashboard en la nube.
 * `guia_dashboard_streamlit.md` -> Explicación técnica de cómo funcionan las gráficas de Streamlit.
 * `guia_basica_pandas_sintaxis.md` -> Documentación de apoyo de Python para estudiantes.
